@@ -47,6 +47,8 @@ public class Quizzes {
                 correct++;
         }
         System.out.println("Correct: " + (int)correct + ", Percent Correct: " + (correct * 100 /answers.length));
+        if(correct == 0)
+            System.out.println("What a loser.");
     }
     
     private static boolean gradeAnother(Scanner scan) {

@@ -13,6 +13,12 @@ public class ArrayReverser {
         
         arr = getArray(scan, VALUES);
         arr = reverseArray(arr);
+        
+        System.out.print("[");
+        for(int i=0;i<arr.length;i++) {
+            System.out.print(arr[i] + ", ");
+        }
+        System.out.print("]");
     }
     private static int[] getArray(Scanner scan, int length) {
         int[] arr = new int[length];
@@ -43,6 +49,9 @@ public class ArrayReverser {
             arr[0] = arr[arr.length - 1];
             arr[arr.length - 1] = swap;
             int[] middle = reverseArray(Arrays.copyOfRange(arr, 1, arr.length - 1));
+            for(int i=0;i<middle.length;i++) {
+                arr[i+1] = middle[i];
+            }
             return arr;
         }
     }
