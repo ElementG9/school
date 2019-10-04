@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=TriangleTest
+comment1.params=
+comment1.target=void\ runTests()
+comment2.params=testName\ testResult
+comment2.target=void\ test(java.lang.String,\ boolean)
+comment3.params=
+comment3.target=boolean\ triangleInstantiationTest()
+numComments=4

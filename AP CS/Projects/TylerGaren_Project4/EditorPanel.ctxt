@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=EditorPanel
+comment0.text=\r\n\ EditorPanel\ houses\ an\ Editor\ in\ a\ GUI.\r\n\ Features\ implemented\ are\:\r\n\ <ul>\r\n\ <li>Move\ Left/Right</li>\r\n\ <li>Go\ to\ home/end</li>\r\n\ <li>Backspace</li>\r\n\ <li>Type\ in\ Unicode\ Characters</li>\r\n\ </ul>\r\n\ Mouse\ actions\ are\ not\ implemented.\r\n\ \r\n\ EditorPanel\ creates\ its\ own\ frame.\r\n\ \r\n\ @author\ Tyler\ Middleton\ (with\ minor\ edits\ by\ Kyle\ Gillette)\ \r\n\ @version\ 10-4-10\r\n
+comment1.params=e
+comment1.target=void\ keyPressed(java.awt.event.KeyEvent)
+comment2.params=e
+comment2.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment3.params=e
+comment3.target=void\ keyTyped(java.awt.event.KeyEvent)
+comment4.params=
+comment4.target=EditorPanel()
+comment5.params=beginning\ end
+comment5.target=EditorPanel(java.lang.String,\ java.lang.String)
+comment6.params=g
+comment6.target=void\ paintComponent(java.awt.Graphics)
+numComments=7

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Cobra
+comment1.params=
+comment1.target=Cobra()
+comment2.params=_length\ _hue\ _legs\ _ageInYears
+comment2.target=Cobra(double,\ java.lang.String,\ boolean,\ int)
+comment3.params=
+comment3.target=int\ celebrateBirthday()
+comment4.params=
+comment4.target=void\ puberty()
+numComments=5

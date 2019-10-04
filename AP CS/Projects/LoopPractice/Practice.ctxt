@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Practice
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=upTo
+comment2.target=int\ sumOdds(int)
+comment3.params=precision
+comment3.target=double\ piApprox(long)
+comment4.params=flips
+comment4.target=int\ numTails(int)
+comment5.params=n\ t
+comment5.target=int\ countRolls(int,\ int)
+numComments=6

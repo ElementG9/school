@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=GrapherPanel
+comment0.text=\r\n\ Grapher\ Panel\ creates\ a\ JFrame\ that\ displays\ Point,\ Line,\ and\ Polygon\ objects.\r\n\ Objects\ to\ be\ drawn\ are\ stored\ in\ arrays\ and\ drawn\ in\ the\ paint\ method.\r\n\ @author\ Rob\ Schreiber\r\n
+comment1.params=
+comment1.target=GrapherPanel()
+comment1.text=\r\n\ Creates\ and\ displays\ a\ JFrame\ and\ adds\ a\ GrapherPanel\ object\ to\ it.\r\n
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+comment2.text=\r\n\ Draws\ the\ GrapherPanel\ and\ stored\ geometric\ objects.\r\n\r\n\ @param\ g\ Graphics\ object\ used\ for\ drawing.\r\n
+comment3.params=p
+comment3.target=void\ paintPoint(Point)
+comment3.text=\r\n\ Draws\ a\ Point\ object\ on\ the\ GrapherPanel\ as\ a\ 5\ pixel\ radius\ circle\r\n\ centered\ on\ the\ Point\ object's\ x\ and\ y\ values\ scaled\ by\ 25\ pixels\r\n\ per\ integer\ value\ and\ centered\ around\ the\ origin\ at\ 250,\ 250.\r\n\r\n\ @param\ p\ The\ Point\ object\ to\ paint.\r\n
+comment4.params=l
+comment4.target=void\ paintLine(Line)
+comment4.text=\r\n\ Draws\ a\ Line\ object\ on\ the\ GrapherPanel\ as\ a\ 1\ pixel\ wide\ line\r\n\ ending\ on\ the\ points\ defining\ the\ Line\ object.\r\n\r\n\ @param\ The\ Line\ to\ paint.\r\n
+comment5.params=p
+comment5.target=void\ plotPoint(Point)
+comment5.text=\r\n\ Adds\ a\ Point\ object\ to\ the\ list\ of\ Points\ to\ draw.\r\n\r\n\ @param\ The\ Point\ to\ be\ added\ to\ the\ draw\ list.\r\n
+comment6.params=l
+comment6.target=void\ plotLine(Line)
+comment6.text=\r\n\ Adds\ a\ Line\ object\ to\ the\ list\ of\ Lines\ to\ draw.\r\n\r\n\ @param\ The\ Line\ to\ be\ added\ to\ the\ draw\ list.\r\n
+numComments=7

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ArrayReverser
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=scan\ length
+comment2.target=int[]\ getArray(java.util.Scanner,\ int)
+comment3.params=arr
+comment3.target=int[]\ reverseArray(int[])
+numComments=4

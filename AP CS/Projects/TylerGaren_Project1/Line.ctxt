@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Line
+comment1.params=_a\ _b
+comment1.target=Line(Point,\ Point)
+comment2.params=
+comment2.target=Point\ getPointA()
+comment3.params=
+comment3.target=Point\ getPointB()
+comment4.params=
+comment4.target=double\ getSlope()
+comment5.params=
+comment5.target=double\ getLength()
+comment6.params=
+comment6.target=Point\ getMidpoint()
+comment7.params=
+comment7.target=double\ getPerpSlope()
+comment8.params=
+comment8.target=java.lang.String\ toString()
+comment9.params=
+comment9.target=Line\ getPerpBisector()
+numComments=10

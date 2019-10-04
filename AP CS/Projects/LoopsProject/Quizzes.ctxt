@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Quizzes
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=scan\ questions
+comment2.target=int[]\ getAnswers(java.util.Scanner,\ int)
+comment3.params=scan\ answers
+comment3.target=void\ gradeQuiz(java.util.Scanner,\ int[])
+comment4.params=scan
+comment4.target=boolean\ gradeAnother(java.util.Scanner)
+numComments=5

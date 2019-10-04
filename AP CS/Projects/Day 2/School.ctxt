@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=School
+comment1.params=
+comment1.target=School()
+comment2.params=_students\ _hasCats\ _areNerds\ _squareFeet\ _name
+comment2.target=School(int,\ boolean,\ boolean,\ double,\ java.lang.String)
+numComments=3
