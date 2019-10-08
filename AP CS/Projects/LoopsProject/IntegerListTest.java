@@ -19,6 +19,7 @@ public class IntegerListTest {
     // Do what the menu item calls for.
     public static void dispatch(int choice) {
         int loc;
+        int item;
         switch(choice) {
             case 0: 
                 System.out.println("Bye!");
@@ -32,6 +33,19 @@ public class IntegerListTest {
             case 2:
                 list.print();
                 break;
+            case 3:
+                System.out.println("What should be inserted?");
+                item = scan.nextInt();
+                list.addElement(item);
+                break;
+            case 4:
+                System.out.println("What should be removed?");
+                item = scan.nextInt();
+                list.removeFirst(item);
+                break;
+            case 420:
+                System.out.println("Epic gamer");
+                break;
             default:
                 System.out.println("Sorry, invalid choice");
         }
@@ -42,8 +56,10 @@ public class IntegerListTest {
         System.out.println("\n   Menu   ");
         System.out.println("   ====");
         System.out.println("0: Quit");
-        System.out.println("1: Create a new list (** do this first!! **)");
+        System.out.println("1: Create a new list (** Do this first!! **)");
         System.out.println("2: Print the list");
+        System.out.println("3: Add an item");
+        System.out.println("4: Remove an item");
         System.out.print("\nEnter your choice: ");
     }
 }
