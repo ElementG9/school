@@ -19,7 +19,7 @@ public class IntegerList {
     // Fill array with integers between 1 and 100, inclusive.
     public void randomize() {
     for (int i = 0; i < numFilled; i++)
-        list[i] = (int)(Math.random() * 100) + 1;
+        list[i] = (int)(Math.random() * 5) + 1;
     }
 
     // Print array elements with indexes.
@@ -57,13 +57,12 @@ public class IntegerList {
     
     // Remove all occurences of a value.
     public void removeAll(int item) {
-        int offset = 0;
-        for (int i = 0; i < numFilled; i++) {
+        int numOfItem = 0;
+        for (int i = 0; i < numFilled; i++)
             if (list[i] == item)
-                offset++;
-            else
-                list[i-offset] = list[i];
-        }
+                numOfItem++;
+        for (int i = 0; i < numOfItem; i++)
+            removeFirst(item);
     }
     
     // Double the list size and move the old things over.

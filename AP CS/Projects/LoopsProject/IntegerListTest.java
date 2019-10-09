@@ -43,6 +43,10 @@ public class IntegerListTest {
                 item = scan.nextInt();
                 list.removeFirst(item);
                 break;
+            case 5:
+                System.out.println("What should be removed?");
+                item = scan.nextInt();
+                list.removeAll(item);
             case 420:
                 System.out.println("Epic gamer");
                 break;
@@ -59,7 +63,8 @@ public class IntegerListTest {
         System.out.println("1: Create a new list (** Do this first!! **)");
         System.out.println("2: Print the list");
         System.out.println("3: Add an item");
-        System.out.println("4: Remove an item");
+        System.out.println("4: Remove the first occurence of an item");
+        System.out.println("5: Remove all occurences of an item");
         System.out.print("\nEnter your choice: ");
     }
 }
