@@ -6,7 +6,7 @@ public class IntegerListTest {
 
     // Create a list, then repeatedly print the menu and do what the
     // user asks until they quit.
-    public static void main(String[] args) {
+    public static void main() {
         printMenu();
         int choice = scan.nextInt();
         while (choice != 0) {
