@@ -1,4 +1,6 @@
+// U2.6.2
 import java.util.Scanner;
+
 public class Quizzes {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

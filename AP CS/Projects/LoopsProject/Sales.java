@@ -1,10 +1,4 @@
-// ****************************************************************
-// Sales.java
-//
-// Reads in and stores sales for each of 5 salespeople.  Displays
-// sales entered by salesperson id and total sales for all salespeople.
-//
-// ****************************************************************
+// U2.6.1
 import java.util.Scanner;
 
 public class Sales {

@@ -1,3 +1,4 @@
+// U2.6.5
 import java.text.NumberFormat;
 
 public class ShoppingCart {
@@ -30,9 +31,13 @@ public class ShoppingCart {
         String contents = "\nShopping Cart\n";
         contents += "\nItem\t\tUnit Price\tQuantity\tTotal\n";
 
-        for (int i = 0; i < itemCount; i++)
+        int totalItems = 0;
+        for (int i = 0; i < itemCount; i++) {
             contents += cart[i].toString() + "\n";
+            totalItems += cart[i].getQuantity();
+        }
 
+        contents += "\nTotal Items: " + totalItems;
         contents += "\nTotal Price: " + fmt.format(totalPrice);
         contents += "\n";
 
