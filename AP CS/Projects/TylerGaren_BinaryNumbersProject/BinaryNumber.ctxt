@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=BinaryNumber
+comment1.params=input
+comment1.target=BinaryNumber(int)
+comment2.params=num
+comment2.target=java.lang.String\ decimalToBinary(int)
+comment3.params=num
+comment3.target=java.lang.String\ decimalToHex(int)
+comment4.params=num
+comment4.target=int\ hexToDecimal(java.lang.String)
+comment5.params=num
+comment5.target=java.lang.String\ hexToBinary(java.lang.String)
+comment6.params=num
+comment6.target=int\ binaryToDecimal(java.lang.String)
+comment7.params=num
+comment7.target=java.lang.String\ binaryToHex(java.lang.String)
+numComments=8
