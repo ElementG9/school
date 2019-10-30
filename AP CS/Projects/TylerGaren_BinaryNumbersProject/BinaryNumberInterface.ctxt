@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=BinaryNumberInterface
+comment1.params=x
+comment1.target=BinaryNumber\ add(BinaryNumber)
+comment10.params=
+comment10.target=java.lang.String\ toBinaryString()
+comment11.params=
+comment11.target=java.lang.String\ toHexString()
+comment2.params=
+comment2.target=BinaryNumber\ negate()
+comment3.params=x
+comment3.target=BinaryNumber\ subtract(BinaryNumber)
+comment4.params=
+comment4.target=BinaryNumber\ shiftLeft()
+comment5.params=
+comment5.target=BinaryNumber\ uShiftRight()
+comment6.params=x
+comment6.target=BinaryNumber\ and(BinaryNumber)
+comment7.params=x
+comment7.target=BinaryNumber\ or(BinaryNumber)
+comment8.params=x
+comment8.target=BinaryNumber\ xOr(BinaryNumber)
+comment9.params=
+comment9.target=int\ toInt()
+numComments=12
