@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=BaseConverter
+comment1.params=num
+comment1.target=char\ decimalToHexChar(int)
+comment2.params=num
+comment2.target=int\ hexCharToDecimal(char)
+comment3.params=num\ fromBase\ toBase
+comment3.target=java.lang.String\ convertBase(java.lang.String,\ int,\ int)
+numComments=4
