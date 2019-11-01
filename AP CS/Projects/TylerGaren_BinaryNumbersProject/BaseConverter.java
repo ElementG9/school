@@ -1,7 +1,8 @@
 import java.lang.*;
 public class BaseConverter {
     private static char decimalToHexChar(int num) {
-        if (num > 0 && num < 10)
+        System.out.println(num);
+        if (num >= 0 && num < 10)
             return (char)(num + '0');
         else if (num == 10)
             return 'a';
