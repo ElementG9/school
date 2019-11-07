@@ -85,4 +85,46 @@ public class BinaryTools {
     public static String binaryLeftPad(String num) {
         return "0" + num;
     }
+    public static String negate(String num) {
+        String out = "";
+        for(int i = 0; i < num.length(); i++)
+            out += num.charAt(i) == '1' ? "0" : "1";
+        return out;
+    }
+    public static String add(String num1, String num2) {
+        String out = "";
+        while (num1.length() < num2.length())
+            num1 = binaryLeftPad(num1);
+        while (num2.length() < num1.length())
+            num2 = binaryLeftPad(num2);
+        boolean carry = false;
+        for(int i = num1.length() - 1; i > -1; i--) {
+            int temp = 0;
+            if (carry)
+                temp++;
+            if(num1.charAt(i) == '1')
+                temp++;
+            if(num2.charAt(i) == '1')
+                temp++;
+            if (temp == 0) {
+                out = "0" + out;
+                carry = false;
+            } else if (temp == 1) {
+                out = "1" + out;
+                carry = false;
+            } else if (temp == 2) {
+                out = "0" + out;
+                carry = true;
+            } else if (temp == 3) {
+                out = "1" + out;
+                carry = true;
+            }
+        }
+        if (carry)
+            out = "1" + out;
+        return out;
+    }
+    public static String twosCompliment(String num1) {
+        return add(negate(num1), "1");
+    }
 }

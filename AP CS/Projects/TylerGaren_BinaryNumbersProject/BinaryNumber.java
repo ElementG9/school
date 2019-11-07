@@ -2,31 +2,35 @@ public class BinaryNumber {
     boolean[] bits = new boolean[9];
     // bits[0] = is negative flag
     // bits[1 - 8] = the data
-
+    public BinaryNumber(int input) {
+        boolean negative;
+        String binaryInput;
+        if (input < -256 || input > 255)
+            throw new IllegalArgumentException("Input must be between -256 and 255.");
+        if (input < 0) {
+            negative = true;
+            input *= -1;
+            binaryInput = BinaryTools.convertBase(Integer.toString(input), 10, 2);
+        } else {
+            negative = false;
+            binaryInput = BinaryTools.convertBase(Integer.toString(input), 10, 2);
+        }
+        while (binaryInput.length() < 9)
+            binaryInput = "0" + binaryInput;
+        if (negative) {
+            binaryInput = BinaryTools.twosCompliment(binaryInput);
+        }
+        System.out.println(binaryInput);
+        bits = BinaryTools.binaryToBoolean(binaryInput);
+    }
     public BinaryNumber(String input) {
-        input = input.toLowerCase(); // Convert capital letters in hex to lowercase.
-        String numType;
-        if (input.substring(0, 2).equals("0x")) {// A hex number.
-            numType = "hex";
-            input = input.substring(2); // Remove the prefix.
-        } else if (input.substring(0, 2).equals("0b")) {// A binary number.
-            numType = "bin";
-            input = input.substring(1); // Remove the prefix.
-        } else {
-            numType = "dec";
-        }
-        int value = 0;
-        System.out.println(input);
-        if (numType.equals("hex")) {
-            System.out.println(BinaryTools.convertBase(input, 16, 10));
-            value = Integer.parseInt(BinaryTools.convertBase(input, 16, 10), 10);
-        } else if (numType.equals("hex")) {
-            System.out.println(BinaryTools.convertBase(input, 2, 10));
-            value = Integer.parseInt(BinaryTools.convertBase(input, 2, 10));
-        } else {
-            System.out.println(input);
-            value = Integer.parseInt(input);
-        }
+        // input = input.toLowerCase(); // Convert capital letters in hex to lowercase.
+        // String numType;
+        // if (input.length() > 3) {
+            // if (input.substring(0, 2).equals("0b"))
+                // numType = "bin";
+            // else if (input.substring(0, 2).equals("0x"))
+        // } else numType = "dec"; // Assume decimal if no prefix.
     }
 
     // public BinaryNumber add(BinaryNumber num) {
@@ -128,9 +132,11 @@ public class BinaryNumber {
         // return new BinaryNumber(BinaryTools.booleanToBinary(newBits));
     // }
 
-    // public int toInt() {
-        // return Integer.parseInt(BinaryTools.convertBase(BinaryTools.booleanToBinary(bits), 2, 10));
-    // }
+    public int toInt() {
+        if (bits[0])
+            return -1 * Integer.parseInt(BinaryTools.convertBase(BinaryTools.twosCompliment(BinaryTools.booleanToBinary(bits)), 2, 10));
+        else return Integer.parseInt(BinaryTools.convertBase(BinaryTools.booleanToBinary(bits), 2, 10));
+    }
 
     // public String toBinaryString() {
         // return "0b" + BinaryTools.booleanToBinary(bits);
