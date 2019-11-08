@@ -85,6 +85,24 @@ public class BinaryTools {
     public static String binaryLeftPad(String num) {
         return "0" + num;
     }
+    public static String negDecToBin(int input) {
+        boolean negative;
+        String binaryInput;
+        if (input < 0) {
+            negative = true;
+            input *= -1;
+            binaryInput = BinaryTools.convertBase(Integer.toString(input), 10, 2);
+        } else {
+            negative = false;
+            binaryInput = BinaryTools.convertBase(Integer.toString(input), 10, 2);
+        }
+        while (binaryInput.length() < 9)
+            binaryInput = "0" + binaryInput;
+        if (negative) {
+            binaryInput = BinaryTools.twosCompliment(binaryInput);
+        }
+        return binaryInput;
+    }
     public static String negate(String num) {
         String out = "";
         for(int i = 0; i < num.length(); i++)

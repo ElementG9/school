@@ -1,37 +1,58 @@
 public class BinaryNumberTest {
     public static void main() {
-        System.out.println("--- NEW RUN ---");
-        BinaryNumber num1 = new BinaryNumber("0b100000001"); // -1
-        // BinaryNumber num1 = new BinaryNumber(10); // 0xa, 0b1010
-        // BinaryNumber num2 = new BinaryNumber("0xc"); // 12, 0b1100
-        // if (num1.toInt() != 10 || num2.toInt() != 12)
-            // System.out.println("toInt() Fail");
-        // else System.out.println("toInt() Pass");
-        // if (!num1.toBinaryString().equals("0b1010") || !num2.toBinaryString().equals("0b1100"))
-            // System.out.println("Incorrect toBinaryString()");
-        // else System.out.println("toInt() Pass");
-        // if (!num1.toHexString().equals("0xa") || !num2.toHexString().equals("0xc"))
-            // System.out.println("Incorrect toHexString()");
-        // else System.out.println("toInt() Pass");
-        // if (num1.add(num2).toInt() != 22)
-            // System.out.println("add() Fail");
-        // else System.out.println("add() Pass");
-        // if (num1.negate().toInt() != 5) // 0b0101
-            // System.out.println("negate() Fail");
-        // else System.out.println("negate() Pass");
-        // if (num2.subtract(num1).toInt() != -2)
-            // System.out.println("subtract() Fail");
-        // else System.out.println("subtract() Pass");
+        System.out.println("--- Running test ---");
+        int correct = 0;
+        int total = 0;
         
-    // BinaryNumber add(BinaryNumber x);
-    // BinaryNumber negate();
-    // BinaryNumber subtract(BinaryNumber x);
-    // BinaryNumber shiftLeft();
-    // BinaryNumber uShiftRight();
-    // BinaryNumber and(BinaryNumber x);
-    // BinaryNumber or(BinaryNumber x);
-    // BinaryNumber xOr(BinaryNumber x);
-    // String toBinaryString();
-    // String toHexString();
+        BinaryNumber num1 = new BinaryNumber(-5); // Test negatives and int constructor.
+        BinaryNumber num2 = new BinaryNumber("0x0af"); // 0x0af = 175, Test hex constructor.
+        
+        System.out.print("toInt(): ");
+        if (num1.toInt() != -5 || num2.toInt() != 175)
+            System.out.println("FAIL");
+        else {
+            System.out.println("PASS");
+            correct++;
+        }
+        total++;
+        
+        System.out.print("toBinaryString(): ");
+        if (!num1.toBinaryString().equals("0b111111011") || !num2.toBinaryString().equals("0b010101111"))
+            System.out.println("FAIL");
+        else {
+            System.out.println("PASS");
+            correct++;
+        }
+        total++;
+        
+        System.out.print("toHexString(): ");
+        if (!num1.toHexString().equals("0x1fb") || !num2.toHexString().equals("0xaf"))
+            System.out.println("FAIL");
+        else {
+            System.out.println("PASS");
+            correct++;
+        }
+        total++;
+        
+        System.out.print("add(): ");
+        if (num1.add(num2).toInt() != 170)
+            System.out.println("FAIL");
+        else {
+            System.out.println("PASS");
+            correct++;
+        }
+        total++;
+        
+        System.out.print("negate(): ");
+        if (!num1.negate().toBinaryString().equals("0b000000100") || !num2.negate().toBinaryString().equals("0b101010000"))
+            System.out.println("FAIL");
+        else {
+            System.out.println("PASS");
+            correct++;
+        }
+        total++;
+        
+        System.out.println("--- Finished test ---");
+        System.out.println("Correct: " + correct + ", Total: " + total + ", Percent Correct: " + (((double)correct / total) * 100) + "%");
     }
 }
