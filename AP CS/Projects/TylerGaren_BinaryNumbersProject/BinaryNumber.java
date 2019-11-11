@@ -1,13 +1,15 @@
 public class BinaryNumber implements BinaryNumberInterface {
     boolean[] bits = new boolean[9];
-    // bits[0] = is negative flag
-    // bits[1 - 8] = the data
+    // bits[0] = the negative flag.
+    // bits[1 - 8] = the data.
+    // int constructor.
     public BinaryNumber(int input) {
         if (input < -256 || input > 255)
             throw new IllegalArgumentException("Input must be between -256 and 255.");
         String binaryInput = BinaryTools.negDecToBin(input);
         bits = BinaryTools.binaryToBoolean(binaryInput);
     }
+    // decimal, binary, or hex string constructor.
     public BinaryNumber(String input) {
         String numType = "dec";
         if (input.length() > 3) {
@@ -34,7 +36,7 @@ public class BinaryNumber implements BinaryNumberInterface {
     }
 
     public BinaryNumber add(BinaryNumber num) {
-        return new BinaryNumber(toInt() + num.toInt());
+        return new BinaryNumber(toInt() + num.toInt()); // Could use BinaryTools.add(), but simpler this way.
     }
 
     public BinaryNumber negate() {
@@ -42,7 +44,7 @@ public class BinaryNumber implements BinaryNumberInterface {
     }
 
     public BinaryNumber subtract(BinaryNumber num) {
-        return new BinaryNumber(toInt() - num.toInt());
+        return new BinaryNumber(toInt() - num.toInt()); // Could use BinaryTools.add(), but simpler this way.
     }
 
     public BinaryNumber shiftLeft() {
@@ -55,55 +57,27 @@ public class BinaryNumber implements BinaryNumberInterface {
     }
 
     public BinaryNumber and(BinaryNumber num) {
-       String numString = num.toBinaryString();
-       String result = "";
-       for (int i = 2; i < numString.length(); i++)
-           result += (numString.charAt(i) == '1') && (this.toBinaryString().charAt(i) == '1') ? "1" : "0";
-       return new BinaryNumber("0b" + result);
+        String numString = num.toBinaryString();
+        String result = "";
+        for (int i = 2; i < numString.length(); i++)
+            result += (numString.charAt(i) == '1') && (this.toBinaryString().charAt(i) == '1') ? "1" : "0";
+        return new BinaryNumber("0b" + result);
     }
 
     public BinaryNumber or(BinaryNumber num) {
-        boolean[] newBits; // The bits to return.
-        boolean[] numBits = BinaryTools.binaryToBoolean(num.toBinaryString().substring(2)); // The bits from the other number.
-        boolean[] bitsClone = new boolean[bits.length]; // A clone of our bits.
-        for (int i = 0; i < bits.length; i++)
-            bitsClone[i] = bits[i];
-        // Make the bits to return equal in length to the biggest number.
-        if (numBits.length > bitsClone.length)
-            newBits = new boolean[numBits.length];
-        else newBits = new boolean[bitsClone.length];
-        // Pad the smaller number to be equal in length.
-        while(numBits.length < bitsClone.length)
-            numBits = BinaryTools.booleanLeftPad(numBits);
-        while(numBits.length > bitsClone.length)
-            bitsClone = BinaryTools.booleanLeftPad(bitsClone);
-
-        for (int i = 0; i < newBits.length; i++)
-            newBits[i] = numBits[i] || bitsClone[i];
-
-        return new BinaryNumber(BinaryTools.booleanToBinary(newBits));
+        String numString = num.toBinaryString();
+        String result = "";
+        for (int i = 2; i < numString.length(); i++)
+            result += (numString.charAt(i) == '1') || (this.toBinaryString().charAt(i) == '1') ? "1" : "0";
+        return new BinaryNumber("0b" + result);
     }
 
     public BinaryNumber xOr(BinaryNumber num) {
-        boolean[] newBits; // The bits to return.
-        boolean[] numBits = BinaryTools.binaryToBoolean(num.toBinaryString().substring(2)); // The bits from the other number.
-        boolean[] bitsClone = new boolean[bits.length]; // A clone of our bits.
-        for (int i = 0; i < bits.length; i++)
-            bitsClone[i] = bits[i];
-        // Make the bits to return equal in length to the biggest number.
-        if (numBits.length > bitsClone.length)
-            newBits = new boolean[numBits.length];
-        else newBits = new boolean[bitsClone.length];
-        // Pad the smaller number to be equal in length.
-        while(numBits.length < bitsClone.length)
-            numBits = BinaryTools.booleanLeftPad(numBits);
-        while(numBits.length > bitsClone.length)
-            bitsClone = BinaryTools.booleanLeftPad(bitsClone);
-
-        for (int i = 0; i < newBits.length; i++)
-            newBits[i] = numBits[i] != bitsClone[i];
-
-        return new BinaryNumber(BinaryTools.booleanToBinary(newBits));
+        String numString = num.toBinaryString();
+        String result = "";
+        for (int i = 2; i < numString.length(); i++)
+            result += (numString.charAt(i) != this.toBinaryString().charAt(i)) ? "1" : "0";
+        return new BinaryNumber("0b" + result);
     }
 
     public int toInt() {

@@ -1,6 +1,7 @@
+// BinaryTools exists to simplify the functions in BinaryNumber while still being simple.
 import java.lang.*;
 public class BinaryTools {
-    // Convert 15 to 0xf.
+    // Convert 0-15 to 0x0-0xf.
     public static char decimalToHexChar(int num) {
         if (num >= 0 && num < 10)
             return (char)(num + '0');
@@ -18,7 +19,7 @@ public class BinaryTools {
             return 'f';
         else return '!'; // Return ! if num greater than 16 or less than 0.
     }    
-    // Convert 0xf to 15.
+    // Convert 0x0-0xf to 0-15.
     public static int hexCharToDecimal(char num) {
         if (num == '0' || num == '1' || num == '2' || num == '3' || num == '4' || num == '5' || num == '6' || num == '7' || num == '8' || num == '9')
             return Integer.parseInt(Character.toString(num));
@@ -36,7 +37,7 @@ public class BinaryTools {
             return 15;
         else return -1; // Return -1 if num greater than 0xf or less than 0x0.
     }    
-    // Convert bases.
+    // Convert bases. num is expected to be positive, negatives are untested.
     public static String convertBase(String num, int fromBase, int toBase) {
         num = num.toLowerCase();
         if (fromBase < 2 || fromBase > 16)
@@ -59,32 +60,25 @@ public class BinaryTools {
         }
         return out;
     }
-    // Boolean[] to binary string.
+    // Boolean[] to binary string. [true, false, true] to "101".
     public static String booleanToBinary(boolean[] bools) {
         String out = "";
         for (int i = 0; i < bools.length; i++)
             out += bools[i] ? "1" : "0";
         return out;
     }
-    // Binary string to boolean[]
+    // Binary string to boolean[]. "101" to [true, false, true].
     public static boolean[] binaryToBoolean(String num) {
         boolean[] bools = new boolean[num.length()];
         for (int i = 0; i < num.length(); i++)
             bools[i] = num.charAt(i) == '1';
         return bools;
     }
-    // Pad boolean array.
-    public static boolean[] booleanLeftPad(boolean[] bools) {
-        boolean[] newBools = new boolean[bools.length + 1];
-        for (int i = 0; i < bools.length; i++)
-            newBools[i + 1] = bools[i];
-        newBools[0] = false;
-        return newBools;
-    }
-    // Pad binary string.
+    // Pad binary string. "101" to "0101".
     public static String binaryLeftPad(String num) {
         return "0" + num;
     }
+    // Converts decimal numbers to binary, with negatives.
     public static String negDecToBin(int input) {
         boolean negative;
         String binaryInput;
@@ -103,12 +97,14 @@ public class BinaryTools {
         }
         return binaryInput;
     }
+    // Negates a binary string. "101" to "010".
     public static String negate(String num) {
         String out = "";
         for(int i = 0; i < num.length(); i++)
             out += num.charAt(i) == '1' ? "0" : "1";
         return out;
     }
+    // Adds two binary numbers.
     public static String add(String num1, String num2) {
         String out = "";
         while (num1.length() < num2.length())
@@ -142,6 +138,7 @@ public class BinaryTools {
             out = "1" + out;
         return out;
     }
+    // Two's compliment of a binary string.
     public static String twosCompliment(String num1) {
         return add(negate(num1), "1");
     }
