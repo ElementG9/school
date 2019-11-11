@@ -40,7 +40,7 @@ public class BinaryNumber implements BinaryNumberInterface {
     }
 
     public BinaryNumber negate() {
-        return new BinaryNumber("0b" + BinaryTools.negate(BinaryTools.booleanToBinary(bits)));
+        return new BinaryNumber(-1 * Math.abs(this.toInt()));
     }
 
     public BinaryNumber subtract(BinaryNumber num) {

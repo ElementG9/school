@@ -6,17 +6,17 @@ public class BinaryTools {
         if (num >= 0 && num < 10)
             return (char)(num + '0');
         else if (num == 10)
-            return 'a';
+            return 'A';
         else if (num == 11)
-            return 'b';
+            return 'B';
         else if (num == 12)
-            return 'c';
+            return 'C';
         else if (num == 13)
-            return 'd';
+            return 'D';
         else if (num == 14)
-            return 'e';
+            return 'E';
         else if (num == 15)
-            return 'f';
+            return 'F';
         else return '!'; // Return ! if num greater than 16 or less than 0.
     }    
     // Convert 0x0-0xf to 0-15.
@@ -25,15 +25,27 @@ public class BinaryTools {
             return Integer.parseInt(Character.toString(num));
         else if (num == 'a')
             return 10;
+        else if (num == 'A')
+            return 10;
         else if (num == 'b')
+            return 11;
+        else if (num == 'B')
             return 11;
         else if (num == 'c')
             return 12;
+        else if (num == 'C')
+            return 12;
+        else if (num == 'd')
+            return 13;
         else if (num == 'd')
             return 13;
         else if (num == 'e')
             return 14;
+        else if (num == 'e')
+            return 14;
         else if (num == 'f')
+            return 15;
+        else if (num == 'F')
             return 15;
         else return -1; // Return -1 if num greater than 0xf or less than 0x0.
     }    

@@ -2,6 +2,4 @@
 comment0.target=BinaryNumberTest
 comment1.params=
 comment1.target=void\ main()
-comment2.params=name\ test
-comment2.target=boolean\ test(java.lang.String,\ boolean)
-numComments=3
+numComments=2
