@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Int
+comment1.params=
+comment1.target=Int()
+comment2.params=iNt
+comment2.target=Int(int)
+comment3.params=
+comment3.target=int\ getInt()
+comment4.params=
+comment4.target=int\ getOne()
+comment5.params=
+comment5.target=int\ getTwo()
+comment6.params=
+comment6.target=int\ getThree()
+comment7.params=
+comment7.target=int\ getFour()
+comment8.params=
+comment8.target=int\ getFive()
+numComments=9

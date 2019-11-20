@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Cat
+comment1.params=_age\ _name
+comment1.target=Cat(int,\ java.lang.String)
+comment2.params=
+comment2.target=void\ haveBirthday()
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4
