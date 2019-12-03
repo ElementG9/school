@@ -12,6 +12,9 @@ public class Player {
         chips -= num;
         return chips;
     }
+    public boolean isOut() {
+        return chips <= 0;
+    }
     public String getName() {
         return name;
     }
