@@ -11,7 +11,6 @@ public class Die {
 
   public int roll () {
     int roll = (int)(Math.random() * sides) + 1;
-
     return roll;
   }
 }
