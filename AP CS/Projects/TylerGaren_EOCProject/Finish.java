@@ -1,20 +1,13 @@
 import java.util.*;
 public class Finish {
     public static void main (String[] args) {
+        System.out.println("Welcome to Finish!");
         Finish game = new Finish();
-        int roundNum = 0;
         Scanner scan = new Scanner(System.in);
-
         while (game.isRunning) {
-            roundNum++;
-            System.out.print("Round " + roundNum + ":");
-            if (roundNum == 69)
-                System.out.println(" nice");
-            else System.out.print("\n");
-            game.runRound();
-            game.printStatus();
             System.out.print("Press enter to continue:");
             scan.nextLine();
+            game.runRound();
         }
         System.out.println("Thanks for playing Finish!");
     }
@@ -22,10 +15,9 @@ public class Finish {
     Board gameboard;   // F-I-N-I-S-H
     Player[] players;
     public boolean isRunning;
+    public int roundNum;
     public Finish() {
         Scanner scan = new Scanner(System.in);
-
-        System.out.println("Welcome to Finish!");
         System.out.print("How many players? (3-5): ");
         int numOfPlayers = scan.nextInt();
         while (numOfPlayers < 3 || numOfPlayers > 5) {
@@ -45,22 +37,26 @@ public class Finish {
         // Set up the gameboard.
         gameboard = new Board();
         gameboard.clear();
+        roundNum = 0;
         isRunning = true;
     }
 
     public void runRound () {
+        roundNum++;
+        System.out.print("Round #" + roundNum);
+        if (roundNum == 69)
+            System.out.println(": nice");
+        else
+            System.out.println(":");
         for (int i = 0; i < players.length; i++)
-            if (takeTurn(players[i]))
-                isRunning = false;
+            if (isRunning)
+                takeTurn(players[i]);
+        printStatus();
     }
 
     public void winGame (Player p, String reason) {
         System.out.println(p.getName() + " won the game by " + reason);
-    }
-
-    public void instawin (Player p) {
-        winGame(p, "rolling 1 2 3 4 5 6");
-        return;
+        isRunning = false;
     }
 
     public void allPayToOne(Player p, int amt) {
@@ -100,9 +96,9 @@ public class Finish {
     }
 
     public boolean takeTurn (Player p) {
+        // Return true if a player won.
         // Check if p is the only player not out.
         int playersIn = 0;
-
         for (int i = 0; i < players.length; i++)
             if (!players[i].isOut())
                 playersIn++;
@@ -110,9 +106,9 @@ public class Finish {
             winGame(p, "all the other players got out");
             return true;
         }
+        // Don't do anything if the player is out.
         if (p.isOut())
             return false;
-
         // Print information.
         System.out.println(p.getName() + "'s turn:");
         gameboard.printStatus();
@@ -124,7 +120,7 @@ public class Finish {
         rolls = gameboard.sort(rolls);
         for (int i = 0; i < rolls.length; i++)
             System.out.print(" " + rolls[i]);
-        System.out.println();
+        System.out.print("\n");
         // Check instawin.
         boolean instawin = true;
         if (rolls.length == 6)
@@ -134,44 +130,16 @@ public class Finish {
         if (rolls.length != 6)
             instawin = false;
         if (instawin) {
-            instawin(p);
+            winGame(p, "rolling 1 2 3 4 5 6");
             return true;
         }
         // Check normally.
         int originalNeeded = gameboard.numToRoll();
-        for (int needed = gameboard.numToRoll(); needed < rolls.length; needed++) {
-            boolean found = false;
-            for (int i = 0; i < rolls.length; i++) // Search for the number in the player's rolls.
-                if (rolls[i] == needed)
-                    found = true;
-            if (found) { // The player got the required number.
-                // Print out the data.
-                System.out.print("\t" + p.getName() + " got a " + needed);
-                if (needed == 6) { // The player got a 6 and won the round.
-                    System.out.print("\n");
-                    winRound(p);
-                } else if (needed == originalNeeded) // The player got something on the board.
-                    System.out.println(" and does not need to pay anything to the pot");
-                else System.out.print("\n"); // The player got something extra on the board.
-                // Update the gameboard.
-                gameboard.setLetter(needed - 1);
-                gameboard.removeDie();
-            } else { // The player did not get the required number.
-                System.out.print("\t" + p.getName() + " did not get a " + needed);
-                if (needed == originalNeeded) { // They got nothing on the board.
-                    // Print out the data.
-                    System.out.println(" and needs to pay " + (7 - needed) + " to the pot");
-                    // Update the pot.
-                    gameboard.addToPot(7 - needed);
-                    p.removeChips(7 - needed);
-                    // Check if the player goes out.
-                    if (p.isOut())
-                        System.out.println("\t" + p.getName() + " is out due to running out of chips.");
-                    else System.out.println("\t" + p.getName() + " has " + p.getChips() + " chips"); // Print the new chips.
-                    System.out.println("\tPot: " + gameboard.getPot()); // Print the new pot.
-                }
-                else System.out.print("\n");
-                break;         // Stop looking for higher numbers if p didn't get a roll.
+        boolean needsToPay = true;
+        for (int i = originalNeeded; i < 6; i++) {
+            for (int j = 0; j < rolls.length; j++) {
+                if (rolls[i] == originalNeeded)
+                    needsToPay = true;
             }
         }
         return false;
