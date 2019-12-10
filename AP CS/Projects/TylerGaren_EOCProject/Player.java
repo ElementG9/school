@@ -11,8 +11,11 @@ public class Player {
   }
 
   public int removeChips (int num) {
-    chips -= num;
-    return chips;
+    if (chips - num <= 0) {
+        int temp = chips;
+        chips = 0;
+        return temp;
+    } else return (chips -= num);
   }
 
   public boolean isOut () {
