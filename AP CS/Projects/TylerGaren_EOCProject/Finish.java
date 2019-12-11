@@ -18,6 +18,19 @@ public class Finish {
     public int roundNum;
     int currentPlayer;
     public Finish() {
+        System.out.println();
+        // Get the players
+        players = getPlayers();
+        // Set up the gameboard.
+        gameboard = new Board();
+        gameboard.clear();
+        roundNum = 0;
+        currentPlayer = 0;
+        isRunning = true;
+    }
+    
+    public static Player[] getPlayers() {
+        Player[] p;
         Scanner scan = new Scanner(System.in);
         System.out.print("How many players? (3-5): ");
         int numOfPlayers = scan.nextInt();
@@ -27,20 +40,14 @@ public class Finish {
             numOfPlayers = scan.nextInt();
         }
         // Set up players.
-        players = new Player[numOfPlayers];
+        p = new Player[numOfPlayers];
         scan.nextLine();
         for (int i = 0; i < numOfPlayers; i++) {
             System.out.print("Player " + (i + 1) + " name: ");
             String name = scan.nextLine();
-            players[i] = new Player(name);
+            p[i] = new Player(name);
         }
-        System.out.println();
-        // Set up the gameboard.
-        gameboard = new Board();
-        gameboard.clear();
-        roundNum = 0;
-        currentPlayer = 0;
-        isRunning = true;
+        return p;
     }
 
     public void winRound (Player p) {
@@ -70,7 +77,6 @@ public class Finish {
             System.out.println(":");
         for (int i = 0; i < players.length; i++) {
             if (isRunning) {
-                
                 if(takeTurn(players[i]))
                     isRunning = false;
             }
@@ -118,13 +124,28 @@ public class Finish {
         }
         // Check normally.
         int originalNeeded = gameboard.numToRoll();
+        int numToCrossOff = 0;
         boolean needsToPay = true;
-        for (int i = originalNeeded; i < 6; i++) {
-            for (int j = 0; j < rolls.length; j++) {
-                if (rolls[i] == originalNeeded)
+        for (int j = 0; j < rolls.length; j++) {
+            if (rolls[j] == originalNeeded)
+                needsToPay = false;
+            if (rolls[j] == gameboard.numToRoll()) {
+                System.out.print("\t" + p.getName() + " got a " + gameboard.numToRoll());
+                if (gameboard.numToRoll() == originalNeeded) {
                     needsToPay = false;
+                    System.out.println(" and does not need to pay anything to the pot.");
+                } else System.out.print("\n");
+                gameboard.crossOff();
             }
-            if(i == originalNeeded && needsToPay);
+            if(gameboard.numToRoll() == originalNeeded && needsToPay) {
+                System.out.println("\t" + p.getName() + " did not get a " + originalNeeded + " and must pay " + (7 - originalNeeded) + " to the pot.");
+                p.removeChips(7 - originalNeeded);
+                gameboard.addToPot(7 - originalNeeded);
+                if (p.isOut())
+                    System.out.println("\t" + p.getName() + " is out due to running out of chips.");
+                else System.out.println("\t" + p.getName() + " has " + p.getChips() + " chips"); // Print the new chips.
+                break;
+            }
         }
         return false;
     }
