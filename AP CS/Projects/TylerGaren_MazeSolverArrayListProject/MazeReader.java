@@ -41,7 +41,6 @@ public class MazeReader
             row++;
         }
         points.add( endPoint );
-        System.out.println( points );
         sc.close();
         return points;  // get actual list of points
     }
@@ -50,24 +49,27 @@ public class MazeReader
     // postcondition : returns true if there is a path of adjacent points from the first point to the last point, false otherwise.
     public static boolean isSolvable( ArrayList<Point> points )
     {
-        Point start = points.get(0);
         Point end = points.get(points.size() - 1);
+        ArrayList<Point> second = new ArrayList<Point>();
+        second.add(points.remove(0));
+        while (second.size() > 0) {
+            for(int i = 0; i < points.size(); i++) {
+                if (adjacent(second.get(0), points.get(i))) {
+                    if(samePoint(points.get(i), end))
+                        return true;
+                    else {
+                        second.add(points.remove(i));
+                        i--;
+                    }
+                }
+            }
+            second.remove(0);
+        }
         return false;
     }
-    public static ArrayList<Point> solve(ArrayList<Point> points) {
-        // p is the current point.
-        // points is all the points.
-        Point start = points.get(0);
-        Point end = points.get(points.size() - 1);
-        ArrayList<Point> checked = new ArrayList<Point>();
-        return checked;
-    }
-    private static ArrayList<Point> getAdjacents(Point p, ArrayList<Point> points) {
-        ArrayList<Point> neighbors = new ArrayList<Point>();
-        for(int i = 0; i < points.size(); i++)
-            if(adjacent(p, points.get(i)))
-                neighbors.add(points.get(i));
-        return neighbors;
+    
+    private static boolean samePoint(Point p1, Point p2) {
+        return (p1.getX() == p2.getX() && p1.getY() == p2.getY());
     }
 
     // postcondition : returns true if the to points are next to each other (not diagonally.)
@@ -105,16 +107,19 @@ public class MazeReader
     } 
     // test 
     public static void main( String [] args )
-    {   MazeReader mr;
+    {   
+        for(int i = 0; i < 3; i ++)
+            System.out.println();
+        MazeReader mr;
         String testFile = "";
-        for( int i = 1; i <= 5; i++ )
+        for( int i = 0; i <= 5; i++ )
         {   mr = new MazeReader();
             testFile = "testmaze" + i + ".txt" ;
             // System.out.println( mr.getMaze("testmaze.txt") );  for debugging purposes
             if( isSolvable( mr.getMaze( testFile ) ))
-                System.out.println( testFile + " is solvable" );
+                System.out.println( "Non-Recursive: " + testFile + " is     solvable" );
             else
-                System.out.println( testFile + " is not solvable" );
+                System.out.println( "Non-Recursive: " + testFile + " is not solvable" );
         }
     }
 }
