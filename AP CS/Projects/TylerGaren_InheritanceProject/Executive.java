@@ -1,0 +1,1 @@
+public class Executive extends Employee { private double bonus; public Executive(String name, String address, String phone, String ssn, double rate) { super(name, address, phone, ssn, rate); this.bonus = 0; } public double pay() { return this.rate + this.bonus; } public void awardBonus(double execBonus) { this.bonus = execBonus; } }

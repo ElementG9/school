@@ -1,0 +1,1 @@
+public class Employee extends StaffMember { protected String ssn; protected double rate; public Employee(String name, String address, String phone, String ssn, double rate) { super(name, address, phone); this.ssn = ssn; this.rate = rate; } public double pay() { return this.rate; } public String toString() { return super.toString() + "\nSocial Security Number: " + this.ssn; } }

@@ -1,0 +1,1 @@
+public class Intern extends StaffMember { public Intern(String name, String address, String phone) { super(name, address, phone); } public double pay() { return 0.0; } }
