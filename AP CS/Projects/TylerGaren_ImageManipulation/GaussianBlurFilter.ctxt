@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=GaussianBlurFilter
+comment1.params=pi
+comment1.target=void\ filter(PixelImage)
+comment2.params=data\ filter
+comment2.target=Pixel[][]\ applyFilter(Pixel[][],\ int[][])
+numComments=3

@@ -66,6 +66,17 @@ public class Square
     //--------------------------------------
     public boolean magic() {
         boolean isMagic = true;
+        int sum = this.sumRow(0);
+        for (int i = 0; i < this.square.length; i++)
+            if (this.sumRow(i) != sum)
+                isMagic = false;
+        for (int i = 0; i < this.square.length; i++)
+            if (this.sumCol(i) != sum)
+                isMagic = false;
+        if (this.sumMainDiag() != sum)
+            isMagic = false;
+        if (this.sumOtherDiag() != sum)
+            isMagic = false;
         return isMagic;
     }
     //--------------------------------------
@@ -92,7 +103,7 @@ public class Square
         System.out.println("Square size: " + this.square.length);
         for(int y = 0; y < this.square.length; y++) {
             for(int x = 0; x < this.square[y].length; x++)
-                System.out.print(this.square[y][x]);
+                System.out.print(this.square[y][x] + " ");
             System.out.print("\n");
         }
     }
