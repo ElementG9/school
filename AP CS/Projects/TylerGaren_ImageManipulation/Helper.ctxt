@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Helper
+comment1.params=data\ filter
+comment1.target=Pixel[][]\ applyFilter(Pixel[][],\ int[][])
+numComments=2

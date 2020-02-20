@@ -18,7 +18,8 @@ public class SnapShopConfiguration
         theShop.addFilter(new NegativeImageFilter(), "Reverse Image");  
         theShop.addFilter(new GrayScaleFilter(), "Gray Scale Image" );
         theShop.addFilter(new GaussianBlurFilter(), "Gaussian Blur Image"); 
-        // theShop.addFilter(new LaplacianFilter(), "Laplacian Image");   
+        theShop.addFilter(new LaplacianFilter(), "Laplacian Image"); 
+        theShop.addFilter(new UnsharpMaskingFilter(), "Unsharp Image");
         //theShop.addFilter(new LightenBy10Filter(), "Lighten by 10 Image" );
         //theShop.addFilter(new IntensifyFilter(), "Intensify Image" );
         //theShop.addFilter(new EmbossFilter(), "Emboss Filter" );
