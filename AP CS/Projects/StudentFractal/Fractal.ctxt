@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Fractal
+comment1.params=type\ foreground\ background
+comment1.target=FractalPanel(java.lang.String,\ java.awt.Color,\ java.awt.Color)
+comment2.params=a\ b
+comment2.target=Coord\ mid(Coord,\ Coord)
+comment3.params=a\ b
+comment3.target=Coord\ third(Coord,\ Coord)
+comment4.params=a\ b
+comment4.target=double\ dist(Coord,\ Coord)
+comment5.params=g2\ a\ b
+comment5.target=void\ drawKochSide(java.awt.Graphics2D,\ Coord,\ Coord)
+comment6.params=g2\ a\ b\ c
+comment6.target=void\ drawSierpinski(java.awt.Graphics2D,\ Coord,\ Coord,\ Coord)
+comment7.params=g
+comment7.target=void\ paintComponent(java.awt.Graphics)
+comment8.params=
+comment8.target=void\ init()
+comment9.params=args
+comment9.target=void\ main(java.lang.String[])
+numComments=10
