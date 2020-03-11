@@ -4,41 +4,70 @@ public class MergeSort {
         System.out.println("\n-=-=- Merge Sort -=-=-\n");
         // Integer[] data = { 1, 2 };
         Integer[] data = { 9, 5, 8, 2, 4, 1, 6, 5 };
+        Integer[] halfSorted = { 2, 5, 8, 9, 1, 4, 5, 6 };
         System.out.print("Data: ");
         printArr(data);
-        mergeSort(data);
+        mergeSort(halfSorted);
         System.out.print("Merge Sorted: ");
         printArr(data);
     }
     public static void mergeSort(Integer[] arr) {
-        mergeSort(arr, 0, arr.length - 1);
+        merge(arr, 0, (int)(arr.length - 1)/2, arr.length - 1);
+        // mergeSort(arr, 0, arr.length - 1);
     }
     private static void mergeSort(Integer[] arr, int low, int high) {
-        if (high - low > 1) {
-            mergeSort(arr, low, (high-low)/2);
-            mergeSort(arr, (high-low)/2, high);
-        }
+        // System.out.println("Diff: " + (high - low));
+        // int split = (high - low)/2;
+        // System.out.println("Low Half: " + (split - low));
+        // System.out.println("High Half: " + (high - split));
+        // if (low != high) {
+            // mergeSort(arr, low, split);
+            // mergeSort(arr, split + 1, high);
+        // }
     }
     private static void merge(Integer[] arr, int low, int mid, int high) {
+        Integer[] sorted = new Integer[high - low];
+        int index = 0;
+        int lowIndex = low;
+        int highIndex = mid + 1;
+        printArr(arr);
+        for (int i = 0; i < 8; i++) {
+            if (lowIndex > mid && highIndex > high) {
+            } else if (highIndex > high && lowIndex <= mid) {
+                sorted[index] = arr[lowIndex];
+                index++;
+                lowIndex++;
+                System.out.println("\tAdded low");
+            } else if (lowIndex > mid && highIndex <= high) {
+                sorted[index] = arr[highIndex];
+                index++;
+                highIndex++;
+                System.out.println("\tAdded high");
+            } else {
+                System.out.println("low: " + arr[lowIndex] + ", index: " + lowIndex);
+                System.out.println("high: " + arr[highIndex] + ", index: " + highIndex);
+                if (arr[lowIndex] < arr[highIndex]) {
+                    sorted[index] = arr[lowIndex];
+                    index++;
+                    lowIndex++;
+                    System.out.println("\tAdded low");
+                } else if (arr[highIndex] < arr[lowIndex]) {
+                    sorted[index] = arr[highIndex];
+                    index++;
+                    highIndex++;
+                    System.out.println("\tAdded high");
+                } else {
+                    sorted[index] = arr[highIndex];
+                    index++;
+                    highIndex++;
+                    System.out.println("\tAdded high");
+                }
+            }
+        }
+        printArr(sorted);
     }
-    // public static int[] mergeSort(int[] arr) {
-        // if (arr.length == 1)
-            // return arr;
-        // int splitIndex = (int) (arr.length * 0.5);
-        // int[] firstHalf = new int[splitIndex];
-        // int[] secondHalf = new int[arr.length - splitIndex];
-        // for (int i = 0; i < arr.length; i++) {
-            // if (i < splitIndex)
-                // firstHalf[i] = arr[i];
-            // else secondHalf[i - splitIndex] = arr[i];
-        // }
-        // int[] sortedFirstHalf = mergeSort(firstHalf);
-        // int[] sortedSecondHalf = mergeSort(secondHalf);
-        
-        // return arr;
-    // }
     public static void printArr(Integer[] arr) {
-        for (int i : arr)
+        for (Integer i : arr)
             System.out.print(" " + i);
         System.out.print("\n");
     }
