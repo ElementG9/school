@@ -5,7 +5,7 @@ public class MergeSort {
         // Integer[] data = { 1, 2 };
         // Integer[] data = { 9, 5, 8, 2, 4, 1, 6, 5 };
         // Integer[] data = { 2, 5, 8, 9, 1, 4, 5, 6 };
-        Integer[] data = {69, 420, 123, 5 ,23, 3, 56,2 ,67};
+        Integer[] data = {69, -420, -123, 5 ,23, 3, -56,2 ,67,16};
         System.out.print("Data: ");
         printArr(data);
         mergeSort(data);
